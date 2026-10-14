@@ -1,0 +1,7 @@
+<div class="title" [ngClass]="{ completed: task.completed }">{{ task.title }}</div>
+<div class="priority">{{ task.priority }}</div>
+<app-task-btn
+  [label]="task.completed ? 'Mark Incomplete' : 'Mark Complete'"
+  [styles]="{ backgroundColor: task.priority === 'High' ? 'red' : task.priority === 'Medium' ? 'yellow' : 'green' }"
+  (click)="markTaskComplete()">
+</app-task-btn>

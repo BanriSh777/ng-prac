@@ -1,0 +1,26 @@
+<div>
+  <p *ngIf="tasks.length === 0; else tasksTemplate">No tasks to display.</p>
+  <ng-template #tasksTemplate>
+    <p>Task Count :{{ tasks.length }}</p>
+    <app-task
+      [task]="task"
+      [class]="task.priority.toLowerCase()"
+      *ngFor="let task of tasks; trackBy: tasktitle"
+      (taskCompleted)="onTaskCompleted(task)"></app-task>
+  </ng-template>
+</div>
+<div class="btns">
+  <div class="inputs">
+    <input type="text" placeholder="Task Title" #taskTitleInput />
+    <input type="text" placeholder="Task Priority" #taskPriorityInput />
+    <input type="checkbox" #taskCompletedInput /> Completed
+  </div>
+  <app-task-btn
+    [label]="'Add Task'"
+    (click)="
+      add(taskTitleInput.value || 'Empty Task', taskPriorityInput.value || 'Medium', taskCompletedInput.checked)
+    ">
+    Add Task
+  </app-task-btn>
+  <app-task-btn [label]="'Reset'" (click)="reset()" [disabled]="tasks.length === 0"> Reset </app-task-btn>
+</div>

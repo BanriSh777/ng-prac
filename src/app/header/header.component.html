@@ -2,34 +2,4 @@
     Name: <input #nameInput type="text" [(ngModel)]="name" />
     <p [hidden]="(nameInput.value.length === 0)">Welcome {{ name }}</p>
 </div>
-<div>
-    <p *ngIf="tasks.length === 0; else tasksTemplate">No tasks to display.</p>
-    <ng-template #tasksTemplate>
-        <p>Task Count :{{ tasks.length }}</p>
-        <table class="task-table">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Priority</th>
-                    <th>Completed</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr [class]="task.priority.toLowerCase()" *ngFor="let task of tasks; trackBy: tasktitle">
-                    <td [ngClass]="{'completed': task.completed }">{{ task.title }}</td>
-                    <td>{{ task.priority }}</td>
-                    <td>{{ task.completed }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </ng-template>
-</div>
-<div class="btns">
-    <div class="inputs">
-        <input type="text" placeholder="Task Title" #taskTitleInput />
-        <input type="text" placeholder="Task Priority" #taskPriorityInput />
-        <input type="checkbox" #taskCompletedInput /> Completed
-    </div>
-    <button (click)="add({'title': taskTitleInput.value || 'Empty Task', 'priority': taskPriorityInput.value || 'Medium', 'completed': taskCompletedInput.checked})">Add Task</button>
-    <button (click)="reset()"  [disabled]="tasks.length === 0">Reset</button>
-</div>
+
