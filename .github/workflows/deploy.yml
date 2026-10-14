@@ -28,10 +28,10 @@ jobs:
         run: npm run build -- --configuration production --base-href=/ng-prac/
 
       - name: Add 404 Fallback for Routing
-        run: cp dist/ng-prac/index.html dist/ng-prac/404.html
+        run: cp dist/my-angular-14-project/index.html dist/my-angular-14-project/404.html
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist/ng-prac
+          folder: dist/my-angular-14-project
           branch: gh-pages
